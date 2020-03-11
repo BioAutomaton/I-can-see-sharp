@@ -24,6 +24,8 @@ namespace Lab1
 
             /*Entering of the second number*/
 
+
+
             do
             {
                 Console.WriteLine("Enter second value. Must be an integer.");
@@ -34,7 +36,7 @@ namespace Lab1
             /*Calculatiuon & output*/
 
             float result = (float)first / (float)second;
-            Console.WriteLine("Square of the private of first and second value is:\t({0}/{1})^3 = {2}", first, second, Math.Pow(result, 3));
+            Console.WriteLine("Cube of the private of first and second value is:\t({0}/{1})^3 = {2}", first, second, Math.Pow(result, 3));
 
             Console.ReadLine();
         }
