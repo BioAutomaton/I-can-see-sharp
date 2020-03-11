@@ -10,6 +10,10 @@ namespace Lab2
     {
         static void Main(string[] args)
         {
+            quadrangle test = new quadrangle();
+            test.print();
+            Console.ReadLine();
         }
+        
     }
 }
