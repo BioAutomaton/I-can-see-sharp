@@ -10,7 +10,7 @@ namespace Lab2
     {
         static void Main()
         {
-
+            int seed = 0;
             Console.WriteLine("Enter the number of quadrangles:");
             int K = 0;
             bool isCorrect;
@@ -27,7 +27,7 @@ namespace Lab2
 
             for (int i = 0; i < K; i++)
             {
-                Quadrangles[i] = new Quadrangle(i);
+                Quadrangles[i] = new Quadrangle(seed++);
                 Quadrangles[i].SideLength();
                 Quadrangles[i].Diagonals();
                 Quadrangles[i].PrintData();
@@ -63,12 +63,11 @@ namespace Lab2
 
 
             Rectangle[] Rectangles = new Rectangle[L];
-            int seedCounter = K + 1;
             for (int i = 0; i < L; i++)
             {
                 do
                 {
-                    Rectangles[i] = new Rectangle(seedCounter++);
+                    Rectangles[i] = new Rectangle(seed++);
                     Rectangles[i].Diagonals();
                     Rectangles[i].SideLength();
                 } while (!Rectangles[i].IsRectangle());
