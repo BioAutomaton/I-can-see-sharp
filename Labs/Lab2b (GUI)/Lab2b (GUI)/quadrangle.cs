@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Lab2
+
+namespace Lab2b__GUI_
 {
     public struct Point2D
     {
@@ -14,13 +11,19 @@ namespace Lab2
 
     public class Quadrangle
     {
-        const int n = 4;
+        private const int pointsNumber = 4;
         Point2D[] points;
-        public double[] length;
-        public double[] diagonal;
-        double perimeter = 0;
-        public double square = 0;
+        private double[] length;
+        private double[] diagonal;
+        private double perimeter = 0;
+        private double square = 0;
         readonly Random r;
+
+        public double Perimeter { get => perimeter; }
+        public double Square { get => square; }
+        public double[] Diagonal { get => diagonal; }
+        public double[] Length { get => length; }
+
         public Quadrangle(int seed)
         {
             r = new Random(seed);
@@ -32,25 +35,24 @@ namespace Lab2
             }
         }
 
-        public void SideLength()
-        {            
-            length = new double[n];
-            for (int i = 0; i < n; i++)
-            {
-                length[i] = Math.Sqrt(Math.Pow(points[(i + 1) % n].x - points[i].x, 2) + Math.Pow(points[(i + 1) % n].y - points[i].y,2));
-            }
-        }
-
-        public double Perimeter()
+        public void GetSideLength()
         {
-            for (int i = 0; i < n; i++)
+            length = new double[pointsNumber];
+            for (int i = 0; i < pointsNumber; i++)
             {
-                perimeter += length[i];
+                length[i] = Math.Sqrt(Math.Pow(points[(i + 1) % pointsNumber].x - points[i].x, 2) + Math.Pow(points[(i + 1) % pointsNumber].y - points[i].y, 2));
             }
-            return perimeter;
         }
 
-        public void Diagonals()
+        public void GetPerimeter()
+        {
+            for (int i = 0; i < pointsNumber; i++)
+            {
+                perimeter += Length[i];
+            }
+        }
+
+        public void GetDiagonals()
         {
             diagonal = new double[2];
             for (int i = 0; i < 2; i++)
@@ -59,32 +61,38 @@ namespace Lab2
             }
         }
 
-        public double Square()
+        public void GetSquare()
         {
             double p = perimeter / 2;
-            square = Math.Sqrt((p - length[0]) * (p - length[1]) * (p - length[2]) * (p - length[3]));
-            return square;
+            square = Math.Sqrt((p - Length[0]) * (p - Length[1]) * (p - Length[2]) * (p - Length[3]));
         }
 
-        public void PrintData()
+        public string PrintData()
         {
+            string data = "";
+
             for (int i = 0; i < points.Length; i++)
             {
-                Console.WriteLine($"X = {points[i].x}\t Y = {points[i].y}");
+                data += $"X = { points[i].x }\t Y = { points[i].y }\n";
             }
 
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < pointsNumber; i++)
             {
-                Console.WriteLine((i + 1) + " side length = " + length[i]);
+                data += $"{i + 1} side length = {Length[i]}\n";
             }
 
-            Console.WriteLine("Diagonal length: ");
             for (int i = 0; i < 2; i++)
             {
-                Console.WriteLine((i + 1) + ": " + diagonal[i]);
+                data += $"{(i + 1)} diagonal = {diagonal[i]}\n";
             }
 
+            data += $"Perimeter = {Perimeter}\n";
+            data += $"Square = {Square}\n";
+            
+            return data;
 
         }
+
+
     }
 }

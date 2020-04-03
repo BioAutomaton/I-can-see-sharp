@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lab2
+namespace Lab2b__GUI_
 {
     public class Rectangle : Quadrangle
     {
@@ -12,13 +12,12 @@ namespace Lab2
         public bool IsRectangle()
         {
             bool result = false;
-            if (diagonal[0] == diagonal[1])
+            if (Diagonal[0] == Diagonal[1])
             {
-                if (length[0] == length[2] && length[1] == length[3])
+                if (Length[0] == Length[2] && Length[1] == Length[3])
                 {
-                    if (diagonal[0] > length[0] && diagonal[0] > length[1])
+                    if (Diagonal[0] > Length[0] && Diagonal[0] > Length[1])
                     {
-                        
                         result = true;
                     }
                 }
