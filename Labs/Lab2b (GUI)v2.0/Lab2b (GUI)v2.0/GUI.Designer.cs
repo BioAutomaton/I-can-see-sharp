@@ -38,7 +38,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.RectanglesNumber = new System.Windows.Forms.TextBox();
-            this.Output = new System.Windows.Forms.RichTextBox();
             this.ErrMsgBox = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.LesserQuadrangles = new System.Windows.Forms.TextBox();
@@ -62,8 +61,11 @@
             // 
             // AvgRectSquare
             // 
+            this.AvgRectSquare.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AvgRectSquare.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AvgRectSquare.Location = new System.Drawing.Point(297, 410);
+            this.AvgRectSquare.Location = new System.Drawing.Point(297, 555);
             this.AvgRectSquare.Name = "AvgRectSquare";
             this.AvgRectSquare.ReadOnly = true;
             this.AvgRectSquare.Size = new System.Drawing.Size(62, 26);
@@ -75,9 +77,12 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Consolas", 12F);
-            this.label1.Location = new System.Drawing.Point(12, 413);
+            this.label1.Location = new System.Drawing.Point(12, 558);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(270, 19);
             this.label1.TabIndex = 2;
@@ -87,9 +92,12 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Consolas", 12F);
-            this.label2.Location = new System.Drawing.Point(12, 313);
+            this.label2.Location = new System.Drawing.Point(12, 458);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(279, 19);
             this.label2.TabIndex = 4;
@@ -98,8 +106,11 @@
             // 
             // AvgQuadSquare
             // 
+            this.AvgQuadSquare.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AvgQuadSquare.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AvgQuadSquare.Location = new System.Drawing.Point(297, 310);
+            this.AvgQuadSquare.Location = new System.Drawing.Point(297, 455);
             this.AvgQuadSquare.Name = "AvgQuadSquare";
             this.AvgQuadSquare.ReadOnly = true;
             this.AvgQuadSquare.Size = new System.Drawing.Size(62, 26);
@@ -159,18 +170,6 @@
             this.RectanglesNumber.Enter += new System.EventHandler(this.FieldsEntering);
             this.RectanglesNumber.Leave += new System.EventHandler(this.FieldsLeaving);
             // 
-            // Output
-            // 
-            this.Output.AccessibleName = "OutputConsole";
-            this.Output.Location = new System.Drawing.Point(384, 12);
-            this.Output.Name = "Output";
-            this.Output.ReadOnly = true;
-            this.Output.Size = new System.Drawing.Size(404, 426);
-            this.Output.TabIndex = 9;
-            this.Output.TabStop = false;
-            this.Output.Text = "";
-            this.Output.TextChanged += new System.EventHandler(this.Output_TextChanged);
-            // 
             // ErrMsgBox
             // 
             this.ErrMsgBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -184,8 +183,11 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.Font = new System.Drawing.Font("Consolas", 12F);
-            this.label5.Location = new System.Drawing.Point(12, 353);
+            this.label5.Location = new System.Drawing.Point(12, 498);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(270, 40);
             this.label5.TabIndex = 11;
@@ -193,8 +195,11 @@
             // 
             // LesserQuadrangles
             // 
+            this.LesserQuadrangles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LesserQuadrangles.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LesserQuadrangles.Location = new System.Drawing.Point(297, 360);
+            this.LesserQuadrangles.Location = new System.Drawing.Point(297, 505);
             this.LesserQuadrangles.Name = "LesserQuadrangles";
             this.LesserQuadrangles.ReadOnly = true;
             this.LesserQuadrangles.Size = new System.Drawing.Size(62, 26);
@@ -207,11 +212,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(972, 593);
             this.Controls.Add(this.LesserQuadrangles);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.ErrMsgBox);
-            this.Controls.Add(this.Output);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.RectanglesNumber);
             this.Controls.Add(this.label3);
@@ -243,7 +247,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox RectanglesNumber;
-        private System.Windows.Forms.RichTextBox Output;
         private System.Windows.Forms.Label ErrMsgBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox LesserQuadrangles;
