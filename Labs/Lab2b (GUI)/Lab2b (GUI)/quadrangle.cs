@@ -78,16 +78,16 @@ namespace Lab2b__GUI_
 
             for (int i = 0; i < pointsNumber; i++)
             {
-                data += $"{i + 1} side length = {Length[i]}\n";
+                data += $"{i + 1} side length = {Length[i]:N1}\n";
             }
 
             for (int i = 0; i < 2; i++)
             {
-                data += $"{(i + 1)} diagonal = {diagonal[i]}\n";
+                data += $"{(i + 1)} diagonal = {diagonal[i]:N1}\n";
             }
 
-            data += $"Perimeter = {Perimeter}\n";
-            data += $"Square = {Square}\n";
+            data += $"Perimeter = {Perimeter:N1}\n";
+            data += $"Square = {Square:N1}\n";
             
             return data;
 

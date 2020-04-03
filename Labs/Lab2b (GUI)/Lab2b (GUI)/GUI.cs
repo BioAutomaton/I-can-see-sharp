@@ -33,7 +33,7 @@ namespace Lab2b__GUI_
                 seed = database.Generate(QuadrNumber, RectNumber, seed);
                 AvgQuadSquare.Text = database.AvgQuadrSquare.ToString("n");
                 AvgRectSquare.Text = database.AvgRectSquare.ToString("n");
-                LesserQuadranglesNumber.Text = database.LesserSquareCounter.ToString("n");
+                LesserQuadrangles.Text = database.LesserSquareCounter.ToString("N0");
 
                 for (int i = 0; i < QuadrNumber; i++)
                 {

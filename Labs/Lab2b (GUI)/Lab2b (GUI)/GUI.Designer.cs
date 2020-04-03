@@ -41,7 +41,7 @@
             this.Output = new System.Windows.Forms.RichTextBox();
             this.ErrMsgBox = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.LesserQuadranglesNumber = new System.Windows.Forms.TextBox();
+            this.LesserQuadrangles = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // GenerateBtn
@@ -191,24 +191,24 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Quantity of Quadrangles with square less than average:";
             // 
-            // LesserQuadranglesNumber
+            // LesserQuadrangles
             // 
-            this.LesserQuadranglesNumber.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LesserQuadranglesNumber.Location = new System.Drawing.Point(297, 258);
-            this.LesserQuadranglesNumber.Name = "LesserQuadranglesNumber";
-            this.LesserQuadranglesNumber.ReadOnly = true;
-            this.LesserQuadranglesNumber.Size = new System.Drawing.Size(62, 26);
-            this.LesserQuadranglesNumber.TabIndex = 12;
-            this.LesserQuadranglesNumber.TabStop = false;
-            this.LesserQuadranglesNumber.Text = "0";
-            this.LesserQuadranglesNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.LesserQuadrangles.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LesserQuadrangles.Location = new System.Drawing.Point(297, 258);
+            this.LesserQuadrangles.Name = "LesserQuadrangles";
+            this.LesserQuadrangles.ReadOnly = true;
+            this.LesserQuadrangles.Size = new System.Drawing.Size(62, 26);
+            this.LesserQuadrangles.TabIndex = 12;
+            this.LesserQuadrangles.TabStop = false;
+            this.LesserQuadrangles.Text = "0";
+            this.LesserQuadrangles.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.LesserQuadranglesNumber);
+            this.Controls.Add(this.LesserQuadrangles);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.ErrMsgBox);
             this.Controls.Add(this.Output);
@@ -246,7 +246,7 @@
         private System.Windows.Forms.RichTextBox Output;
         private System.Windows.Forms.Label ErrMsgBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox LesserQuadranglesNumber;
+        private System.Windows.Forms.TextBox LesserQuadrangles;
     }
 }
 
