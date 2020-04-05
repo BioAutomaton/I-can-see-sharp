@@ -19,10 +19,11 @@ namespace Lab2b__GUI_
         private double square = 0;
         readonly Random r;
 
-        public double Perimeter { get => perimeter; }
-        public double Square { get => square; }
-        public double[] Diagonal { get => diagonal; }
-        public double[] Length { get => length; }
+        public double[] Length { get => length; set => length = value; }
+        public double[] Diagonal { get => diagonal; set => diagonal = value; }
+        public double Square { get => square; set => square = value; }
+        public double Perimeter { get => perimeter; set => perimeter = value; }
+        public Point2D[] Points { get => points; set => points = value; }
 
         public Quadrangle(int seed)
         {
@@ -30,17 +31,17 @@ namespace Lab2b__GUI_
             points = new Point2D[4];
             for (int i = 0; i < points.Length; i++)
             {
-                points[i].x = r.Next(-9, 9);
-                points[i].y = r.Next(-9, 9);
+                points[i].x = r.Next(1, 20);
+                points[i].y = r.Next(1, 20);
             }
         }
 
         public void GetSideLength()
         {
-            length = new double[pointsNumber];
+            Length = new double[pointsNumber];
             for (int i = 0; i < pointsNumber; i++)
             {
-                length[i] = Math.Sqrt(Math.Pow(points[(i + 1) % pointsNumber].x - points[i].x, 2) + Math.Pow(points[(i + 1) % pointsNumber].y - points[i].y, 2));
+                Length[i] = Math.Sqrt(Math.Pow(points[(i + 1) % pointsNumber].x - points[i].x, 2) + Math.Pow(points[(i + 1) % pointsNumber].y - points[i].y, 2));
             }
         }
 
@@ -48,23 +49,40 @@ namespace Lab2b__GUI_
         {
             for (int i = 0; i < pointsNumber; i++)
             {
-                perimeter += Length[i];
+                Perimeter += Length[i];
             }
         }
 
         public void GetDiagonals()
         {
-            diagonal = new double[2];
+            Diagonal = new double[2];
             for (int i = 0; i < 2; i++)
             {
-                diagonal[i] = Math.Sqrt(Math.Pow(points[(i + 2)].x - points[i].x, 2) + Math.Pow(points[(i + 2)].y - points[i].y, 2));
+                Diagonal[i] = Math.Sqrt(Math.Pow(points[(i + 2)].x - points[i].x, 2) + Math.Pow(points[(i + 2)].y - points[i].y, 2));
             }
         }
 
         public void GetSquare()
         {
-            double p = perimeter / 2;
-            square = Math.Sqrt((p - Length[0]) * (p - Length[1]) * (p - Length[2]) * (p - Length[3]));
+            double p = Perimeter / 2;
+            Square = Math.Sqrt((p - Length[0]) * (p - Length[1]) * (p - Length[2]) * (p - Length[3]));
+        }
+
+        public bool IsGood()
+        {
+            bool result = true;
+            for (int i = 0; i < 4; i++)
+            {
+                if (length[i] < 4)
+                {
+                    result = false;
+                    break;
+                }
+                /*Additional check could be added here. For example, return false if no parallel sides detected. But it would slow the algorithm*/
+                /*So I decided to leave it be*/
+            }
+
+            return result;
         }
 
         public string PrintData()
@@ -83,7 +101,7 @@ namespace Lab2b__GUI_
 
             for (int i = 0; i < 2; i++)
             {
-                data += $"{(i + 1)} diagonal = {diagonal[i]:N1}\n";
+                data += $"{(i + 1)} diagonal = {Diagonal[i]:N1}\n";
             }
 
             data += $"Perimeter = {Perimeter:N1}\n";

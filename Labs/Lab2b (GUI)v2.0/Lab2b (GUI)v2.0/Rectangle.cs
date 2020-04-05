@@ -14,7 +14,7 @@ namespace Lab2b__GUI_
             bool result = false;
             if (Diagonal[0] == Diagonal[1])
             {
-                if (Length[0] == Length[2] && Length[1] == Length[3])
+                if (Length[0] == Length[2] && Length[1] == Length[3] && Length[0] > 4)
                 {
                     if (Diagonal[0] > Length[0] && Diagonal[0] > Length[1])
                     {

@@ -8,8 +8,9 @@ namespace Lab2b__GUI_
 {
     public class Storage
     {
-        public Quadrangle[] Quadrangles;
-        public Rectangle[] Rectangles;
+        private Quadrangle[] quadrangles;
+        private Rectangle[] rectangles;
+
         private double avgQuadrSquare = 0;
         private double avgRectSquare = 0;
         int lesserSquareCounter = 0;
@@ -18,49 +19,59 @@ namespace Lab2b__GUI_
         public double AvgQuadrSquare { get => avgQuadrSquare; }
         public double AvgRectSquare { get => avgRectSquare; }
         public int LesserSquareCounter { get => lesserSquareCounter; }
+        public Rectangle[] Rectangles { get => rectangles; }
+        public Quadrangle[] Quadrangles { get => quadrangles; }
 
         public int Generate(int quadrNumber, int rectNumber, int seed)
-        { 
-
-
-
-
-            Quadrangles = new Quadrangle[quadrNumber];
+        {
+            quadrangles = new Quadrangle[quadrNumber + rectNumber];
 
             for (int i = 0; i < quadrNumber; i++)
             {
-                Quadrangles[i] = new Quadrangle(seed++);
-                Quadrangles[i].GetSideLength();
-                Quadrangles[i].GetDiagonals();
-                Quadrangles[i].GetPerimeter();
-                Quadrangles[i].GetSquare();
-                avgQuadrSquare += Quadrangles[i].Square;
+                do
+                {
+                    quadrangles[i] = new Quadrangle(seed++);
+                    quadrangles[i].GetSideLength();
+                    quadrangles[i].GetDiagonals();
+                } while (!quadrangles[i].IsGood());
+                quadrangles[i].GetPerimeter();
+                quadrangles[i].GetSquare();
+                avgQuadrSquare += quadrangles[i].Square;
             }
             avgQuadrSquare /= quadrNumber;
 
             //Console.WriteLine("Average suare of quadrangles: " + avgSquare);
             for (int i = 0; i < quadrNumber; i++)
             {
-                if (Quadrangles[i].Square < avgQuadrSquare) { lesserSquareCounter++; }
+                if (quadrangles[i].Square < avgQuadrSquare) { lesserSquareCounter++; }
             }
             //Console.WriteLine("Quadrangles with suare below average: " + lesserSquareCounter);
 
             /*Rectangles*/
 
-            Rectangles = new Rectangle[rectNumber];
+            rectangles = new Rectangle[rectNumber];
             for (int i = 0; i < rectNumber; i++)
             {
                 do
                 {
-                    Rectangles[i] = new Rectangle(seed++);
-                    Rectangles[i].GetDiagonals();
-                    Rectangles[i].GetSideLength();
-                } while (!Rectangles[i].IsRectangle());
-                Rectangles[i].GetPerimeter();
-                Rectangles[i].GetSquare();
-                avgRectSquare += Rectangles[i].Square;
+                    rectangles[i] = new Rectangle(seed++);
+                    rectangles[i].GetDiagonals();
+                    rectangles[i].GetSideLength();
+                } while (!rectangles[i].IsRectangle());
+                rectangles[i].GetPerimeter();
+                rectangles[i].GetSquare();
+                avgRectSquare += rectangles[i].Square;
             }
             avgRectSquare /= rectNumber;
+
+
+            /*Copy everything to one array*/
+            for (int i = quadrNumber; i < quadrNumber + rectNumber; i++)
+            {
+                quadrangles[i] = new Quadrangle(0);
+
+                quadrangles[i] = rectangles[i - quadrNumber];
+            }
 
             return seed;
         }
