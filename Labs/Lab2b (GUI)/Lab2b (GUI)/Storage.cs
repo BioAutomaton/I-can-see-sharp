@@ -21,10 +21,6 @@ namespace Lab2b__GUI_
 
         public int Generate(int quadrNumber, int rectNumber, int seed)
         { 
-
-
-
-
             Quadrangles = new Quadrangle[quadrNumber];
 
             for (int i = 0; i < quadrNumber; i++)

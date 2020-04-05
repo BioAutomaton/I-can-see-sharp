@@ -18,7 +18,6 @@ namespace Lab2b__GUI_
         public GUI()
         {
             InitializeComponent();
-
         }
         
         private void GenerateBtn_Click(object sender, EventArgs e)

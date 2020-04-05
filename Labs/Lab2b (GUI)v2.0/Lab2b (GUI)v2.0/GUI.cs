@@ -28,7 +28,6 @@ namespace Lab2b__GUI_
             FigureSelection.Items.Clear(); // clear selection list
             try
             {
-                ActiveForm.UseWaitCursor = true;
                 QuadrNumber = Convert.ToInt32(QuadranglesNumber.Text);
                 RectNumber = Convert.ToInt32(RectanglesNumber.Text);
                 seed = database.Generate(QuadrNumber, RectNumber, seed);
@@ -44,12 +43,11 @@ namespace Lab2b__GUI_
                     FigureSelection.Items.Add($"Rectangle  #{i + 1:N0}");
                 }
                 FigureSelection.SelectedIndex = (RectNumber == 0 ? 0 :  QuadrNumber);
-                ActiveForm.UseWaitCursor = false;
+                ActiveControl = FigureSelection;   
             }
             catch (Exception exc)
             {
                 ErrMsgBox.Text = exc.Message;
-                UseWaitCursor = false;
             }
         }
 
@@ -174,19 +172,50 @@ namespace Lab2b__GUI_
             Graphics g = Graphics.FromImage(bmp);
             Pen p = new Pen(Color.Black, 2);
             Pen punct = new Pen(Color.Red);
+            Pen axis = new Pen(Color.Black, 4);
             float[] dashValues = { 4, 4 };
             punct.DashPattern = dashValues;
-            Brush b = new SolidBrush(Color.Red);
-            Font f = new Font(SystemFonts.CaptionFont, FontStyle.Regular);
+            Brush redBrush = new SolidBrush(Color.Red);
+            Brush blackBrush = new SolidBrush(Color.Black);
+            Font captionFont = new Font("Consolas",13, FontStyle.Regular);
+            Font small = new Font("Consolas", 8, FontStyle.Regular);
             string[] PointsName = { "A", "B", "C", "D" };
-            for (int i = 0; i < 4; i++)
+
+            /*Axis drawing*/
+            g.DrawLine(axis,0,0,0,250);
+            g.DrawLine(axis, 0, 0, 250, 0);
+            for (int i = 0; i <= 250; i+=20)
             {
-                g.DrawString(PointsName[i], f, b, database.Quadrangles[N].Points[i].x * 10, database.Quadrangles[N].Points[i].y * 10);
-                g.DrawLine(p, database.Quadrangles[N].Points[i].x * 10, database.Quadrangles[N].Points[i].y * 10, database.Quadrangles[N].Points[(i + 1) % 4].x * 10, database.Quadrangles[N].Points[(i + 1) % 4].y * 10);
+                g.DrawLine(p, i, 0, i, 5);
+                g.DrawLine(p, 0, i, 5, i);
             }
+
+            /*Figure drawing*/
             for (int i = 0; i < 2; i++)
             {
                 g.DrawLine(punct, database.Quadrangles[N].Points[i].x * 10, database.Quadrangles[N].Points[i].y * 10, database.Quadrangles[N].Points[(i + 2) % 4].x * 10, database.Quadrangles[N].Points[(i + 2) % 4].y * 10);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                g.DrawLine(p, database.Quadrangles[N].Points[i].x * 10, database.Quadrangles[N].Points[i].y * 10, database.Quadrangles[N].Points[(i + 1) % 4].x * 10, database.Quadrangles[N].Points[(i + 1) % 4].y * 10);
+            }
+
+
+            /*Flip figure*/
+            bmp.RotateFlip(RotateFlipType.Rotate180FlipX);
+
+            /*Add captions AFTER flipping so they won't be affectet by aforementioned transformation*/
+            for (int i = 0; i < 4; i++)
+            {
+                g.DrawString(PointsName[i], captionFont, blackBrush, database.Quadrangles[N].Points[i].x * 10, 250 -database.Quadrangles[N].Points[i].y * 10);
+                
+            }
+            g.DrawString("OY", captionFont, redBrush, 10, 0);
+            g.DrawString("OX", captionFont, redBrush, 227, 225);
+            for (int i = 20; i <= 220; i+= 20)
+            {
+                g.DrawString($"{i/10}", small, blackBrush, i-5, 230);
+                g.DrawString($"{i/10}", small, blackBrush, 10, 243-i);
             }
             pictureBox1.Image = bmp;
         }

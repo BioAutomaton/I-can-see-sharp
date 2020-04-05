@@ -31,8 +31,8 @@ namespace Lab2b__GUI_
             points = new Point2D[4];
             for (int i = 0; i < points.Length; i++)
             {
-                points[i].x = r.Next(1, 20);
-                points[i].y = r.Next(1, 20);
+                points[i].x = r.Next(5, 20);
+                points[i].y = r.Next(5, 20);
             }
         }
 
