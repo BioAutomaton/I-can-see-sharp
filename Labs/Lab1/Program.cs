@@ -25,7 +25,6 @@ namespace Lab1
             /*Entering of the second number*/
 
 
-
             do
             {
                 Console.WriteLine("Enter second value. Must be an integer.");
@@ -34,9 +33,16 @@ namespace Lab1
             } while (!correct);
 
             /*Calculatiuon & output*/
+            if (second !=0)
+            {
+                float result = (float)first / (float)second;
+                Console.WriteLine("Cube of the private of first and second value is:\t({0}/{1})^3 = {2}", first, second, Math.Pow(result, 3));
+            }
+            else
+            {
+                Console.WriteLine("Error. Second number must be different from zero.");
+            }
 
-            float result = (float)first / (float)second;
-            Console.WriteLine("Cube of the private of first and second value is:\t({0}/{1})^3 = {2}", first, second, Math.Pow(result, 3));
 
             Console.ReadLine();
         }

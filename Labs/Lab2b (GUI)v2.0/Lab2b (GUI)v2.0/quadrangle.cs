@@ -68,7 +68,7 @@ namespace Lab2b__GUI_
             Square = Math.Sqrt((p - Length[0]) * (p - Length[1]) * (p - Length[2]) * (p - Length[3]));
         }
 
-        public bool IsGood()
+        public bool IsBig()
         {
             bool result = true;
             for (int i = 0; i < 4; i++)

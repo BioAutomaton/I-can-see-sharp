@@ -33,7 +33,7 @@ namespace Lab2b__GUI_
                     quadrangles[i] = new Quadrangle(seed++);
                     quadrangles[i].GetSideLength();
                     quadrangles[i].GetDiagonals();
-                } while (!quadrangles[i].IsGood());
+                } while (!quadrangles[i].IsBig());
                 quadrangles[i].GetPerimeter();
                 quadrangles[i].GetSquare();
                 avgQuadrSquare += quadrangles[i].Square;
