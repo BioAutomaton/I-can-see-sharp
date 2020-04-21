@@ -6,17 +6,21 @@ namespace BabySteps
     {
         static void Main(string[] args)
         {
-            int i = 0, j = 0;
-        label:
-            i++;
-            j += i;
-            if (i<10)
-            {
-                Console.Write(i + " ");
-                goto label;
+            ComplexNumber a = new ComplexNumber();
+            ComplexNumber b = new ComplexNumber();
+            ComplexNumber c = new ComplexNumber();
+            ComplexNumber d = new ComplexNumber();
 
+            ComplexNumber R1 = new ComplexNumber();
+            ComplexNumber R2 = new ComplexNumber();
+
+            R1 = a - (b + c) / a;
+            R2 = d * (a + c) / a;
+
+            if (R1 == R2)
+            {
+                /*Message*/
             }
-            Console.ReadLine();
         }
 
         
