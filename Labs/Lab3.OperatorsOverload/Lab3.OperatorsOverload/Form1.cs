@@ -57,5 +57,10 @@ namespace Lab3.OperatorsOverload
         {
 
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

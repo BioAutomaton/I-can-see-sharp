@@ -54,7 +54,7 @@
             // AutoGenerateBtn
             // 
             this.AutoGenerateBtn.Font = new System.Drawing.Font("Consolas", 12F);
-            this.AutoGenerateBtn.Location = new System.Drawing.Point(12, 47);
+            this.AutoGenerateBtn.Location = new System.Drawing.Point(15, 36);
             this.AutoGenerateBtn.Name = "AutoGenerateBtn";
             this.AutoGenerateBtn.Size = new System.Drawing.Size(153, 40);
             this.AutoGenerateBtn.TabIndex = 0;
@@ -65,11 +65,12 @@
             // a1
             // 
             this.a1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.a1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.a1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a1.Location = new System.Drawing.Point(178, 32);
             this.a1.Name = "a1";
             this.a1.ReadOnly = true;
-            this.a1.Size = new System.Drawing.Size(47, 26);
+            this.a1.Size = new System.Drawing.Size(47, 19);
             this.a1.TabIndex = 2;
             this.a1.Text = "0";
             this.a1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -77,11 +78,12 @@
             // a2
             // 
             this.a2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.a2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.a2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.a2.Location = new System.Drawing.Point(178, 77);
+            this.a2.Location = new System.Drawing.Point(178, 66);
             this.a2.Name = "a2";
             this.a2.ReadOnly = true;
-            this.a2.Size = new System.Drawing.Size(47, 26);
+            this.a2.Size = new System.Drawing.Size(47, 19);
             this.a2.TabIndex = 3;
             this.a2.Text = "0";
             this.a2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -89,11 +91,12 @@
             // b2
             // 
             this.b2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.b2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.b2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.b2.Location = new System.Drawing.Point(231, 77);
+            this.b2.Location = new System.Drawing.Point(231, 66);
             this.b2.Name = "b2";
             this.b2.ReadOnly = true;
-            this.b2.Size = new System.Drawing.Size(47, 26);
+            this.b2.Size = new System.Drawing.Size(47, 19);
             this.b2.TabIndex = 5;
             this.b2.Text = "0";
             this.b2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -101,11 +104,12 @@
             // b1
             // 
             this.b1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.b1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.b1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.b1.Location = new System.Drawing.Point(231, 32);
             this.b1.Name = "b1";
             this.b1.ReadOnly = true;
-            this.b1.Size = new System.Drawing.Size(47, 26);
+            this.b1.Size = new System.Drawing.Size(47, 19);
             this.b1.TabIndex = 4;
             this.b1.Text = "0";
             this.b1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -113,11 +117,12 @@
             // c2
             // 
             this.c2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.c2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.c2.Location = new System.Drawing.Point(284, 77);
+            this.c2.Location = new System.Drawing.Point(284, 66);
             this.c2.Name = "c2";
             this.c2.ReadOnly = true;
-            this.c2.Size = new System.Drawing.Size(47, 26);
+            this.c2.Size = new System.Drawing.Size(47, 19);
             this.c2.TabIndex = 7;
             this.c2.Text = "0";
             this.c2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -125,11 +130,12 @@
             // c1
             // 
             this.c1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.c1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.c1.Location = new System.Drawing.Point(284, 32);
             this.c1.Name = "c1";
             this.c1.ReadOnly = true;
-            this.c1.Size = new System.Drawing.Size(47, 26);
+            this.c1.Size = new System.Drawing.Size(47, 19);
             this.c1.TabIndex = 6;
             this.c1.Text = "0";
             this.c1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -172,11 +178,11 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(174, 58);
+            this.label4.Location = new System.Drawing.Point(174, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 19);
             this.label4.TabIndex = 13;
-            this.label4.Text = "-----";
+            this.label4.Text = "—————";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
@@ -184,11 +190,11 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(227, 58);
+            this.label5.Location = new System.Drawing.Point(227, 47);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 19);
             this.label5.TabIndex = 14;
-            this.label5.Text = "-----";
+            this.label5.Text = "—————";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
@@ -196,11 +202,11 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(280, 58);
+            this.label6.Location = new System.Drawing.Point(280, 47);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 19);
             this.label6.TabIndex = 15;
-            this.label6.Text = "-----";
+            this.label6.Text = "—————";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
@@ -208,7 +214,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Consolas", 12F);
-            this.label7.Location = new System.Drawing.Point(67, 151);
+            this.label7.Location = new System.Drawing.Point(67, 147);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(171, 19);
             this.label7.TabIndex = 16;
@@ -219,21 +225,22 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(250, 151);
+            this.label8.Location = new System.Drawing.Point(250, 147);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(81, 19);
             this.label8.TabIndex = 19;
-            this.label8.Text = "--------";
+            this.label8.Text = "————————";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // d1Denom
             // 
             this.d1Denom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.d1Denom.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.d1Denom.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.d1Denom.Location = new System.Drawing.Point(254, 170);
+            this.d1Denom.Location = new System.Drawing.Point(254, 169);
             this.d1Denom.Name = "d1Denom";
             this.d1Denom.ReadOnly = true;
-            this.d1Denom.Size = new System.Drawing.Size(73, 26);
+            this.d1Denom.Size = new System.Drawing.Size(73, 19);
             this.d1Denom.TabIndex = 18;
             this.d1Denom.Text = "0";
             this.d1Denom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -241,11 +248,12 @@
             // d1Num
             // 
             this.d1Num.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.d1Num.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.d1Num.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.d1Num.Location = new System.Drawing.Point(254, 125);
             this.d1Num.Name = "d1Num";
             this.d1Num.ReadOnly = true;
-            this.d1Num.Size = new System.Drawing.Size(73, 26);
+            this.d1Num.Size = new System.Drawing.Size(73, 19);
             this.d1Num.TabIndex = 17;
             this.d1Num.Text = "0";
             this.d1Num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -270,17 +278,18 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(81, 19);
             this.label10.TabIndex = 23;
-            this.label10.Text = "--------";
+            this.label10.Text = "————————";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // d2Denom
             // 
             this.d2Denom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.d2Denom.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.d2Denom.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.d2Denom.Location = new System.Drawing.Point(254, 261);
+            this.d2Denom.Location = new System.Drawing.Point(254, 264);
             this.d2Denom.Name = "d2Denom";
             this.d2Denom.ReadOnly = true;
-            this.d2Denom.Size = new System.Drawing.Size(73, 26);
+            this.d2Denom.Size = new System.Drawing.Size(73, 19);
             this.d2Denom.TabIndex = 22;
             this.d2Denom.Text = "0";
             this.d2Denom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -288,11 +297,12 @@
             // d2Num
             // 
             this.d2Num.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.d2Num.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.d2Num.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.d2Num.Location = new System.Drawing.Point(254, 216);
+            this.d2Num.Location = new System.Drawing.Point(254, 220);
             this.d2Num.Name = "d2Num";
             this.d2Num.ReadOnly = true;
-            this.d2Num.Size = new System.Drawing.Size(73, 26);
+            this.d2Num.Size = new System.Drawing.Size(73, 19);
             this.d2Num.TabIndex = 25;
             this.d2Num.Text = "0";
             this.d2Num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -326,6 +336,7 @@
             this.Controls.Add(this.label4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
