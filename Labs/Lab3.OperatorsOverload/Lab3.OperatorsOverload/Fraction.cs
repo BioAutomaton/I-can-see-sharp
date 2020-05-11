@@ -13,6 +13,8 @@ namespace Lab3.OperatorsOverload
         public int Numerator { get => numerator; set => numerator = value; }
         public int Denominator { get => denominator; set => denominator = value != 0 ? value : 1; }
 
+
+
         public Fraction()
         {
             numerator = 1;
@@ -30,23 +32,6 @@ namespace Lab3.OperatorsOverload
             Numerator = enteredNum;
             Denominator = enteredDenom;
         }
-        //public Fraction(Fraction enteredNum, Fraction enteredDenom)
-        //{
-        //    Numerator = enteredNum.Calculate();
-        //    Denominator = enteredDenom.Calculate();
-        //}
-
-        //public Fraction(double enteredNum, Fraction enteredDenom)
-        //{
-        //    Numerator = enteredNum;
-        //    Denominator = enteredDenom.Calculate();
-        //}
-
-        //public Fraction(Fraction enteredNum, double enteredDenom)
-        //{
-        //    Numerator = enteredNum.Calculate();
-        //    Denominator = enteredDenom;
-        //}
 
         public double Calculate()
         {
