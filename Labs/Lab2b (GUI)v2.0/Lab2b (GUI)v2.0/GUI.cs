@@ -234,6 +234,8 @@ namespace Lab2b__GUI_
                 database.Quadrangles = database.Read(br, QuadrNumber, RectNumber);
                 RefreshFigureSelection();
                 DisplayAverages();
+                QuadranglesNumber.Text = QuadrNumber.ToString();
+                RectanglesNumber.Text = RectNumber.ToString();
 
             }
             catch (Exception exc)
