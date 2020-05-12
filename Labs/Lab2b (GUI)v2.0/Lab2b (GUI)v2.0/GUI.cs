@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,12 +14,17 @@ namespace Lab2b__GUI_
     public partial class GUI : Form
     {
         public Storage database;
+        OpenFileDialog ofd = new OpenFileDialog();
+        SaveFileDialog sfd = new SaveFileDialog();
         private int seed = 100;
         int QuadrNumber = 0;
         int RectNumber = 0;
         public GUI()
         {
             InitializeComponent();
+
+            ofd.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
+            sfd.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
         }
 
         private void GenerateBtn_Click(object sender, EventArgs e)
@@ -31,24 +37,35 @@ namespace Lab2b__GUI_
                 QuadrNumber = Convert.ToInt32(QuadranglesNumber.Text);
                 RectNumber = Convert.ToInt32(RectanglesNumber.Text);
                 seed = database.Generate(QuadrNumber, RectNumber, seed);
-                AvgQuadSquare.Text = database.AvgQuadrSquare.ToString("N2");
-                AvgRectSquare.Text = database.AvgRectSquare.ToString("N2");
-                LesserQuadrangles.Text = database.LesserSquareCounter.ToString("N0");
-                for (int i = 0; i < QuadrNumber; i++)
-                {
-                    FigureSelection.Items.Add($"Quadrangle #{i + 1:N0}");
-                }
-                for (int i = 0; i < RectNumber; i++)
-                {
-                    FigureSelection.Items.Add($"Rectangle  #{i + 1:N0}");
-                }
-                FigureSelection.SelectedIndex = (RectNumber == 0 ? 0 :  QuadrNumber);
-                ActiveControl = FigureSelection;   
+                DisplayAverages();
+                RefreshFigureSelection();
             }
             catch (Exception exc)
             {
                 ErrMsgBox.Text = exc.Message;
             }
+        }
+
+        private void DisplayAverages()
+        {
+            AvgQuadSquare.Text = database.AvgQuadrSquare.ToString("N2");
+            AvgRectSquare.Text = database.AvgRectSquare.ToString("N2");
+            LesserQuadrangles.Text = database.LesserSquareCounter.ToString("N0");
+        }
+
+        private void RefreshFigureSelection()
+        {
+            FigureSelection.Items.Clear();
+            for (int i = 0; i < QuadrNumber; i++)
+            {
+                FigureSelection.Items.Add($"Quadrangle #{i + 1:N0}");
+            }
+            for (int i = 0; i < RectNumber; i++)
+            {
+                FigureSelection.Items.Add($"Rectangle  #{i + 1:N0}");
+            }
+            FigureSelection.SelectedIndex = (RectNumber == 0 ? 0 : QuadrNumber);
+            ActiveControl = FigureSelection;
         }
 
         private void GUI_KeyDown(object sender, KeyEventArgs e)
@@ -146,26 +163,6 @@ namespace Lab2b__GUI_
             DGsClearSelection();
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DiagonalDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void SideLengthDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void PointsDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void ViewFigure(int N)
         {
             Bitmap bmp = new Bitmap(250, 250);
@@ -218,6 +215,46 @@ namespace Lab2b__GUI_
                 g.DrawString($"{i/10}", small, blackBrush, 10, 243-i);
             }
             pictureBox1.Image = bmp;
+        }
+
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ofd.ShowDialog() == DialogResult.Cancel)
+                    return;
+                // получаем выбранный файл
+                string path = ofd.FileName;
+                FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs, Encoding.UTF8);
+
+                QuadrNumber = br.ReadInt32();
+                RectNumber = br.ReadInt32();
+                database = new Storage();
+                database.Quadrangles = database.Read(br, QuadrNumber, RectNumber);
+                RefreshFigureSelection();
+                DisplayAverages();
+
+            }
+            catch (Exception exc)
+            {
+                ErrMsgBox.Text = exc.Message;
+            }
+
+        }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            if (sfd.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            string path = sfd.FileName;
+            FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
+            BinaryWriter bw = new BinaryWriter(fs, Encoding.UTF8);
+            database.Write(bw);
+            bw.Close();
+            fs.Close();
         }
     }
 }

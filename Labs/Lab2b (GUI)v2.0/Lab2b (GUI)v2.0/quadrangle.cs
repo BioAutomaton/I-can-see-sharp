@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.IO;
 
 namespace Lab2b__GUI_
 {
@@ -34,6 +34,20 @@ namespace Lab2b__GUI_
                 points[i].x = r.Next(5, 20);
                 points[i].y = r.Next(5, 20);
             }
+        }
+
+        public Quadrangle()
+        {
+            points = new Point2D[4];
+            for (int i = 0; i < points.Length; i++)
+            {
+                points[i].x = 1;
+                points[i].y = 1;
+            }
+            GetSideLength();
+            GetDiagonals();
+            GetPerimeter();
+            GetSquare();
         }
 
         public void GetSideLength()
@@ -111,6 +125,49 @@ namespace Lab2b__GUI_
 
         }
 
+        public void Write(BinaryWriter bw)
+        {
+            for (int i = 0; i < points.Length; i++)
+            {
+                bw.Write(points[i].x);
+                bw.Write(points[i].y);
+            }
+            for (int i = 0; i < pointsNumber; i++)
+            {
+                bw.Write(Length[i]);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bw.Write(Diagonal[i]);
+            }
+            bw.Write(Perimeter);
+            bw.Write(Square);
+            //bw.Write("\n---\n");
 
+
+        }
+
+        public Quadrangle Read(BinaryReader br)
+        {
+            Quadrangle temp = new Quadrangle();
+
+            for (int i = 0; i < points.Length; i++)
+            {
+                temp.points[i].x = br.ReadInt32();
+                temp.points[i].y = br.ReadInt32();
+            }
+            for (int i = 0; i < pointsNumber; i++)
+            {
+                temp.Length[i] = br.ReadDouble();
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                temp.Diagonal[i] = br.ReadDouble();
+            }
+            temp.Perimeter = br.ReadDouble();
+            temp.Square = br.ReadDouble();
+
+            return temp;
+        }
     }
 }
