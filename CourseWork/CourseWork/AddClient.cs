@@ -49,7 +49,6 @@ namespace CourseWork
             SumOfDepositTextBox.Text = oldClient.SumOfDeposit.ToString();
             TermOfContractTextBox.Text = oldClient.DaysOfContractTerm.ToString();
             AddClientButton.Text = "Edit";
-            
         }
 
 
@@ -58,25 +57,46 @@ namespace CourseWork
             ErrMsgBox.Text = ""; // clear error box
 
             try
-            {
-                if (FirstNameTextBox.Text.Length == 0 || MiddleNameTextBox.Text.Length == 0 || LastNameTextBox.Text.Length == 0)
+            {                
+                if (FirstNameTextBox.Text == "")
                 {
-                    ErrMsgBox.Text = "Please fill all name fields";
+                    ErrMsgBox.Text = "Please fill first name field";
+                    FirstNameTextBox.Select();
                     return;
                 }
-
-                if (StreetTextBox.Text.Length == 0 || CityTextBox.Text.Length == 0 || StateTextBox.Text.Length == 0)
+                else if (MiddleNameTextBox.Text == "")
                 {
-                    ErrMsgBox.Text = "Please fill all address fields";
+                    ErrMsgBox.Text = "Please fill middle name field";
+                    MiddleNameTextBox.Select();
+                    return;
+                }
+                else if (LastNameTextBox.Text == "")
+                {
+                    ErrMsgBox.Text = "Please fill last name field";
+                    LastNameTextBox.Select();
+                    return;
+                }
+                else if (StreetTextBox.Text == "")
+                {
+                    ErrMsgBox.Text = "Please fill street address field";
+                    StreetTextBox.Select();
+                    return;
+                }
+                else if (CityTextBox.Text == "")
+                {
+                    ErrMsgBox.Text = "Please fill city field";
+                    CityTextBox.Select();
+                    return;
+                }
+                else if (StateTextBox.Text == "")
+                {
+                    ErrMsgBox.Text = "Please fill state/province field";
+                    StateTextBox.Select();
                     return;
                 }
 
                 Name name = new Name(FirstNameTextBox.Text, MiddleNameTextBox.Text, LastNameTextBox.Text);
                 Address address = new Address(CountrySelection.Text, StateTextBox.Text, CityTextBox.Text, StreetTextBox.Text);
-                //address += (CountrySelection.Text.Length > 0 ? CountrySelection.Text + ", " : "");
-                //address += (StateTextBox.Text.Length > 0 ? StateTextBox.Text + ", " : "");
-                //address += (CityTextBox.Text.Length > 0 ? CityTextBox.Text + ", " : "");
-                //address += StreetTextBox.Text;
                 string numberOfContract = NumberOfContractTextBox.Text;
                 int sumOfDeposit = Int32.Parse(SumOfDepositTextBox.Text);
                 int termOfContract = Int32.Parse(TermOfContractTextBox.Text);

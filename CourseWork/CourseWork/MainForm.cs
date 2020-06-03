@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -33,9 +26,9 @@ namespace CourseWork
             ofd.Filter = "JSON files(*.json)|*.json|All files(*.*)|*.*";
             sfd.Filter = "JSON files(*.json)|*.json|All files(*.*)|*.*";
 
-            //string path = "C:\\Users\\Михаил\\Documents\\CourseWork\\db.json";
-            //main.Deserialize(File.ReadAllText(path));
-            //RefreshTable(main);
+            string path = "C:\\Users\\Михаил\\Documents\\CourseWork\\db.json";
+            main.Deserialize(File.ReadAllText(path));
+            RefreshTable(main);
             foreach (Client client in main.ListOfClients)
             {
                 WorldInfo.Claim(client.NumberOfContract);
@@ -93,10 +86,7 @@ namespace CourseWork
 
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
 
-        }
 
         private void Serialize(object sender, EventArgs e)
         {
@@ -292,29 +282,7 @@ namespace CourseWork
                 var SearchForm = new SearchForm("edit");
                 if (SearchForm.ShowDialog() == DialogResult.OK)
                 {
-                    bool isEdited = false;
-                    for (int subject = 0; subject < main.ListOfClients.Count; subject++)
-                    {
-                        if (main.ListOfClients[subject].NumberOfContract.Equals(SearchForm.SearchValue))
-                        {
-                            var EditClient = new AddClient(main.ListOfClients[subject]);
-                            if (EditClient.ShowDialog() == DialogResult.OK)
-                            {
-                                main.ListOfClients[subject] = EditClient.NewClient;
-                                isEdited = true;
-                                RefreshTable(main);
-                                break;
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        }
-                    }
-                    if (!isEdited)
-                    {
-                        MessageBox.Show("None was found");
-                    }
+                    EditByContract(SearchForm.SearchValue);
                 }
             }
             else
@@ -328,6 +296,39 @@ namespace CourseWork
             }
         }
 
+        private void EditByContract(string contract)
+        {
+            bool isEdited = false;
+            bool isFound = false;
+            for (int subject = 0; subject < main.ListOfClients.Count; subject++)
+            {
+                if (main.ListOfClients[subject].NumberOfContract.Equals(contract))
+                {
+                    isFound = true;
+                    var EditClient = new AddClient(main.ListOfClients[subject]);
+                    if (EditClient.ShowDialog() == DialogResult.OK)
+                    {
+                        main.ListOfClients[subject] = EditClient.NewClient;
+                        isEdited = true;
+                        RefreshTable(main);
+                        break;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            if (!isFound)
+            {
+                MessageBox.Show("None was found");
+            }
+            else if (!isEdited)
+            {
+                MessageBox.Show("Cancelled");
+            }
+        }
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == (Keys.Control | Keys.F))
@@ -338,6 +339,24 @@ namespace CourseWork
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
+        private void ClientDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (isAdmin)
+            {
+                String contractNumber = ClientDataGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                EditByContract(contractNumber);
+            }
+            else
+            {
+                var PassCheckForm = new PassCheck();
+                if (PassCheckForm.ShowDialog() == DialogResult.OK)
+                {
+                    isAdmin = true;
+                    ClientDataGrid_CellDoubleClick(sender, e);
+                }
+            }
 
+        }
     }
 }
+

@@ -13,7 +13,6 @@ namespace CourseWork
     public class Client
     {
 
-        //public string Address { get; set; }
         public Address Address { get; set; }
         public string NumberOfContract { get; set; }
         public int SumOfDeposit { get; set; }
