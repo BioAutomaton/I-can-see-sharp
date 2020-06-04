@@ -152,7 +152,13 @@ namespace CourseWork
                 DialogResult = DialogResult.Cancel;
                 return true;
             }
-          
+            else if (keyData == (Keys.F1))
+            {
+                Help helpWindow = new Help();
+                helpWindow.Show();
+                return true;
+            }
+
             return base.ProcessCmdKey(ref msg, keyData);
         }
     }

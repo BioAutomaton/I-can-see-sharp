@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.IO;
+using System.Threading;
+using System.Windows;
 using System.Windows.Forms;
 
 
@@ -16,6 +18,7 @@ namespace CourseWork
         bool isAdmin;
 
         static Client[] array = new Client[10];
+        Thread autosaveThread;
 
         public MainForm()
         {
@@ -26,14 +29,17 @@ namespace CourseWork
             ofd.Filter = "JSON files(*.json)|*.json|All files(*.*)|*.*";
             sfd.Filter = "JSON files(*.json)|*.json|All files(*.*)|*.*";
 
-            string path = "C:\\Users\\Михаил\\Documents\\CourseWork\\db.json";
-            main.Deserialize(File.ReadAllText(path));
+            //string path = "C:\\Users\\Михаил\\Documents\\CourseWork\\db.json";
+            
+            main.Deserialize(File.ReadAllText("db.json"));
+            
             RefreshTable(main);
             foreach (Client client in main.ListOfClients)
             {
                 WorldInfo.Claim(client.NumberOfContract);
             }
-
+           autosaveThread = new Thread(Autosave);
+           autosaveThread.Start();
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -86,7 +92,12 @@ namespace CourseWork
 
         }
 
-
+        private void Autosave()
+        {
+            Thread.Sleep(TimeSpan.FromMinutes(5));
+            string filename = $"{DateTime.Now.Day}{DateTime.Now.Month}{DateTime.Now.Year}{DateTime.Now.Hour}{DateTime.Now.Minute}.json";
+            File.WriteAllText(filename, main.Serialize());
+        }
 
         private void Serialize(object sender, EventArgs e)
         {
@@ -101,7 +112,12 @@ namespace CourseWork
             if (ofd.ShowDialog() == DialogResult.Cancel)
                 return;
             string path = ofd.FileName;
-            main.Deserialize(File.ReadAllText(path));
+            if (!main.Deserialize(File.ReadAllText(path)))
+            {
+                System.Windows.MessageBox.Show("Import error. Wrong data");
+                return;
+            }
+
             RefreshTable(main);
 
             WorldInfo.ClearClaimed();
@@ -116,7 +132,12 @@ namespace CourseWork
             if (ofd.ShowDialog() == DialogResult.Cancel)
                 return;
             string path = ofd.FileName;
-            main.DeserializeAppend(File.ReadAllText(path));
+            if (!main.DeserializeAppend(File.ReadAllText(path)))
+            {
+                System.Windows.MessageBox.Show("Import error. Wrong data");
+                return;
+            }
+           
             RefreshTable(main);
 
             foreach (Client client in main.ListOfClients)
@@ -130,7 +151,7 @@ namespace CourseWork
             Database temp = current.SearchByName(name);
             if (temp.ListOfClients.Count == 0)
             {
-                MessageBox.Show("None was found.");
+                System.Windows.MessageBox.Show("None was found.");
             }
             else
             {
@@ -144,7 +165,7 @@ namespace CourseWork
             Database temp = current.SearchByContract(contractNumber);
             if (temp.ListOfClients.Count == 0)
             {
-                MessageBox.Show("None was found.");
+                System.Windows.MessageBox.Show("None was found.");
             }
             else
             {
@@ -158,7 +179,7 @@ namespace CourseWork
             Database temp = current.SearchByTerm(daysOfContract);
             if (temp.ListOfClients.Count == 0)
             {
-                MessageBox.Show("None was found.");
+                System.Windows.MessageBox.Show("None was found.");
             }
             else
             {
@@ -172,7 +193,7 @@ namespace CourseWork
             Database temp = current.SearchBySum(depositSum);
             if (temp.ListOfClients.Count == 0)
             {
-                MessageBox.Show("None was found.");
+                System.Windows.MessageBox.Show("None was found.");
             }
             else
             {
@@ -186,13 +207,13 @@ namespace CourseWork
             Database temp = main.DeleteByLastName(name);
             if (temp.ListOfClients.Count < main.ListOfClients.Count)
             {
-                MessageBox.Show("Deleted");
+                System.Windows.MessageBox.Show("Deleted");
                 main = temp;
                 RefreshTable(main);
             }
             else
             {
-                MessageBox.Show("None was found. Try our brand new search by contract number.");
+                System.Windows.MessageBox.Show("None was found. Try our brand new search by contract number.");
             }
         }
         private void DeleteByContract(string contractNumber)
@@ -200,13 +221,13 @@ namespace CourseWork
             Database temp = main.DeleteByContract(contractNumber);
             if (temp.ListOfClients.Count < main.ListOfClients.Count)
             {
-                MessageBox.Show("Deleted");
+                System.Windows.MessageBox.Show("Deleted");
                 main = temp;
                 RefreshTable(main);
             }
             else
             {
-                MessageBox.Show("None was found");
+                System.Windows.MessageBox.Show("None was found");
             }
         }
 
@@ -321,11 +342,11 @@ namespace CourseWork
             }
             if (!isFound)
             {
-                MessageBox.Show("None was found");
+                System.Windows.MessageBox.Show("None was found");
             }
             else if (!isEdited)
             {
-                MessageBox.Show("Cancelled");
+                System.Windows.MessageBox.Show("Cancelled");
             }
         }
 
@@ -341,21 +362,72 @@ namespace CourseWork
 
         private void ClientDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (isAdmin)
+            if (e.RowIndex >= 0)
             {
-                String contractNumber = ClientDataGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
-                EditByContract(contractNumber);
-            }
-            else
-            {
-                var PassCheckForm = new PassCheck();
-                if (PassCheckForm.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    isAdmin = true;
-                    ClientDataGrid_CellDoubleClick(sender, e);
+                    if (isAdmin)
+                    {
+                        String contractNumber = ClientDataGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        EditByContract(contractNumber);
+                    }
+                    else
+                    {
+                        var PassCheckForm = new PassCheck();
+                        if (PassCheckForm.ShowDialog() == DialogResult.OK)
+                        {
+                            isAdmin = true;
+                            ClientDataGrid_CellDoubleClick(sender, e);
+                        }
+                    }
+                }
+                catch (Exception exc)
+                {
+                    System.Windows.MessageBox.Show(exc.Message);
                 }
             }
+        }
 
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Help helpWindow = new Help();
+            helpWindow.Show();
+
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (main.ListOfClients.Count > 0)
+            {
+                string messageBoxText = "Do you want to save database?";
+                string caption = "We'll miss you";
+                MessageBoxButton button = MessageBoxButton.YesNoCancel;
+                MessageBoxImage icon = MessageBoxImage.Warning;
+                MessageBoxResult result = System.Windows.MessageBox.Show(messageBoxText, caption, button, icon);
+
+                switch (result)
+                {
+                    case MessageBoxResult.None:
+                        break;
+                    case MessageBoxResult.OK:
+                        break;
+                    case MessageBoxResult.Cancel:
+                        e.Cancel = true;
+                        break;
+                    case MessageBoxResult.Yes:
+                        exportToolStripMenuItem.PerformClick();
+                        break;
+                    case MessageBoxResult.No:
+                        break;
+                    default:
+                        break;
+                }
+                if (e.Cancel == false)
+                {
+                    autosaveThread.Abort();
+                }
+            }
         }
     }
 }

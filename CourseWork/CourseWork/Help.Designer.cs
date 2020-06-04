@@ -39,26 +39,21 @@
             // 
             // HelpRichTextBox
             // 
-            this.HelpRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HelpRichTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.HelpRichTextBox.Location = new System.Drawing.Point(246, 12);
             this.HelpRichTextBox.Name = "HelpRichTextBox";
             this.HelpRichTextBox.ReadOnly = true;
-            this.HelpRichTextBox.Size = new System.Drawing.Size(472, 364);
+            this.HelpRichTextBox.Size = new System.Drawing.Size(412, 234);
             this.HelpRichTextBox.TabIndex = 0;
             this.HelpRichTextBox.Text = "";
             // 
             // GeneralBtn
             // 
-            this.GeneralBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.GeneralBtn.FlatAppearance.BorderSize = 0;
             this.GeneralBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GeneralBtn.Font = new System.Drawing.Font("Verdana", 12F);
             this.GeneralBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.GeneralBtn.Location = new System.Drawing.Point(12, 52);
+            this.GeneralBtn.Location = new System.Drawing.Point(12, 12);
             this.GeneralBtn.Name = "GeneralBtn";
             this.GeneralBtn.Size = new System.Drawing.Size(228, 34);
             this.GeneralBtn.TabIndex = 10;
@@ -68,14 +63,11 @@
             // 
             // AddClientBtn
             // 
-            this.AddClientBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.AddClientBtn.FlatAppearance.BorderSize = 0;
             this.AddClientBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddClientBtn.Font = new System.Drawing.Font("Verdana", 12F);
             this.AddClientBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AddClientBtn.Location = new System.Drawing.Point(12, 92);
+            this.AddClientBtn.Location = new System.Drawing.Point(12, 52);
             this.AddClientBtn.Name = "AddClientBtn";
             this.AddClientBtn.Size = new System.Drawing.Size(228, 34);
             this.AddClientBtn.TabIndex = 11;
@@ -85,14 +77,11 @@
             // 
             // RemoveClientBtn
             // 
-            this.RemoveClientBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.RemoveClientBtn.FlatAppearance.BorderSize = 0;
             this.RemoveClientBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RemoveClientBtn.Font = new System.Drawing.Font("Verdana", 12F);
             this.RemoveClientBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.RemoveClientBtn.Location = new System.Drawing.Point(12, 132);
+            this.RemoveClientBtn.Location = new System.Drawing.Point(12, 92);
             this.RemoveClientBtn.Name = "RemoveClientBtn";
             this.RemoveClientBtn.Size = new System.Drawing.Size(228, 34);
             this.RemoveClientBtn.TabIndex = 12;
@@ -102,14 +91,11 @@
             // 
             // EditClientBtn
             // 
-            this.EditClientBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.EditClientBtn.FlatAppearance.BorderSize = 0;
             this.EditClientBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditClientBtn.Font = new System.Drawing.Font("Verdana", 12F);
             this.EditClientBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.EditClientBtn.Location = new System.Drawing.Point(12, 172);
+            this.EditClientBtn.Location = new System.Drawing.Point(12, 132);
             this.EditClientBtn.Name = "EditClientBtn";
             this.EditClientBtn.Size = new System.Drawing.Size(228, 34);
             this.EditClientBtn.TabIndex = 13;
@@ -119,14 +105,11 @@
             // 
             // SearchBtn
             // 
-            this.SearchBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.SearchBtn.FlatAppearance.BorderSize = 0;
             this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchBtn.Font = new System.Drawing.Font("Verdana", 12F);
             this.SearchBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.SearchBtn.Location = new System.Drawing.Point(12, 252);
+            this.SearchBtn.Location = new System.Drawing.Point(12, 212);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(228, 34);
             this.SearchBtn.TabIndex = 14;
@@ -136,14 +119,11 @@
             // 
             // ImpExpBtn
             // 
-            this.ImpExpBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.ImpExpBtn.FlatAppearance.BorderSize = 0;
             this.ImpExpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ImpExpBtn.Font = new System.Drawing.Font("Verdana", 12F);
             this.ImpExpBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ImpExpBtn.Location = new System.Drawing.Point(12, 212);
+            this.ImpExpBtn.Location = new System.Drawing.Point(12, 172);
             this.ImpExpBtn.Name = "ImpExpBtn";
             this.ImpExpBtn.Size = new System.Drawing.Size(228, 34);
             this.ImpExpBtn.TabIndex = 15;
@@ -155,7 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 388);
+            this.ClientSize = new System.Drawing.Size(672, 257);
             this.Controls.Add(this.ImpExpBtn);
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.EditClientBtn);
@@ -163,6 +143,7 @@
             this.Controls.Add(this.AddClientBtn);
             this.Controls.Add(this.GeneralBtn);
             this.Controls.Add(this.HelpRichTextBox);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Help";
             this.Text = "Help";

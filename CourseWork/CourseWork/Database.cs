@@ -31,13 +31,30 @@ namespace CourseWork
             return JsonSerializer.Serialize(listOfClients);
         }
 
-        public void Deserialize(string json)
+        public bool Deserialize(string json)
         {
-            listOfClients = JsonSerializer.Deserialize<List<Client>>(json);
+            try
+            {
+                listOfClients = JsonSerializer.Deserialize<List<Client>>(json);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
-        public void DeserializeAppend(string json)
+        public bool DeserializeAppend(string json)
         {
-            listOfClients.AddRange(JsonSerializer.Deserialize<List<Client>>(json));
+            try
+            {
+                listOfClients.AddRange(JsonSerializer.Deserialize<List<Client>>(json));
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+
         }
 
         public Database SearchByName(string name)
