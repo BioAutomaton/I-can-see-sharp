@@ -22,6 +22,7 @@ namespace CourseWork
 
         public MainForm()
         {
+            Directory.CreateDirectory("autosave");
             InitializeComponent();
             isAdmin = false;
             GoToMainButton.Visible = false;
@@ -29,8 +30,7 @@ namespace CourseWork
             ofd.Filter = "JSON files(*.json)|*.json|All files(*.*)|*.*";
             sfd.Filter = "JSON files(*.json)|*.json|All files(*.*)|*.*";
 
-            //string path = "C:\\Users\\Михаил\\Documents\\CourseWork\\db.json";
-            
+            //string path = "C:\\Users\\Михаил\\source\\repos\\BioAutomaton\\I-can-see-sharp\\CourseWork\\CourseWork\\db.json";
             main.Deserialize(File.ReadAllText("db.json"));
             
             RefreshTable(main);
@@ -95,7 +95,7 @@ namespace CourseWork
         private void Autosave()
         {
             Thread.Sleep(TimeSpan.FromMinutes(5));
-            string filename = $"{DateTime.Now.Day}{DateTime.Now.Month}{DateTime.Now.Year}{DateTime.Now.Hour}{DateTime.Now.Minute}.json";
+            string filename = $"autosave\\{DateTime.Now.Day}{DateTime.Now.Month}{DateTime.Now.Year}{DateTime.Now.Hour}{DateTime.Now.Minute}.json";
             File.WriteAllText(filename, main.Serialize());
         }
 
