@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Lab5.InterfacesConsole
 {
-    class Program
+    interface ISalary
     {
-        List<Person> data = new List<Person>();
+        int GetSalary();
+        void Raise(UInt16 amount);
 
-        static void Main(string[] args)
-        {
-
-        }
     }
 }
