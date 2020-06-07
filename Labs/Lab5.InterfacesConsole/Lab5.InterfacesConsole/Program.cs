@@ -11,7 +11,10 @@ namespace Lab5.InterfacesConsole
 {
     class Program
     {
+        static int seed = 0;
         static List<Person> data = new List<Person>();
+        delegate void Crew();
+        static Crew addDelegate = AddRandom;
         static int GetChoice(int rangeLower, int rangeUpper)
         {
             int selection;
@@ -40,7 +43,7 @@ namespace Lab5.InterfacesConsole
             int selection = GetChoice(1, data.Count);
             return selection;
         }
-        static void Add()
+        static void AddSelection()
         {
 
             Console.WriteLine("Choose who you want to add to the list:\n1 - Servant\n2 - Worker\n3 - Engineer\n4 - Just a person");
@@ -65,8 +68,34 @@ namespace Lab5.InterfacesConsole
                     Console.WriteLine("An error occurred.");
                     break;
             }
+        }
 
+        static void AddRandom()
+        {
+            Random r = new Random(seed++);
+            switch (r.Next(1,4))
+            {
+                case 1:
+                    data.Add(new Servant());
+                    break;
+                case 2:
+                    data.Add(new Worker());
+                    break;
+                case 3:
+                    data.Add(new Engineer());
+                    break;
+                case 4:
+                    data.Add(new Person());
+                    break;
+                default:
+                    break;
+            }
+        }
 
+        static void RetireRandom()
+        {
+            Random r = new Random();
+            data[r.Next(0, data.Count - 1)].Retire();
         }
         static private void Delete()
         {
@@ -110,6 +139,12 @@ namespace Lab5.InterfacesConsole
         }
         static void Main(string[] args)
         {
+            for (int i = 0; i < 4; i++)
+            {
+                addDelegate += AddRandom;
+                addDelegate += RetireRandom;
+            }
+            addDelegate();
             int selection;
             do
             {
@@ -128,7 +163,7 @@ namespace Lab5.InterfacesConsole
                     case 0:
                         break;
                     case 1:
-                        Add();
+                        AddSelection();
                         break;
                     case 2:
                         Delete();
